@@ -84,19 +84,19 @@
 
 
 
-<meta name="description" content="#一.前言
-##KVM简介KVM，即Kernel-based Virtual Machine的简称，是一个开源的系统虚拟化模块，自Linux 2.6.20之后集成在Linux的各个主要发行版本中。它使用Linux自身的调度器进行管理，所以相对于Xen，其核心源码很少。KVM目前已成为学术界的主流VMM之一。KVM的虚拟化需要硬件支持（如Intel VT技术或者AMD V技术)。是基于硬件的完全虚拟">
+<meta name="description" content="##一.前言
+###KVM简介KVM，即Kernel-based Virtual Machine的简称，是一个开源的系统虚拟化模块，自Linux 2.6.20之后集成在Linux的各个主要发行版本中。它使用Linux自身的调度器进行管理，所以相对于Xen，其核心源码很少。KVM目前已成为学术界的主流VMM之一。KVM的虚拟化需要硬件支持（如Intel VT技术或者AMD V技术)。是基于硬件的完全">
 <meta property="og:type" content="article">
 <meta property="og:title" content="运用virt-manager封装管理KVM虚拟机">
 <meta property="og:url" content="http://yoursite.com/2016/09/04/运用virt-manager封装管理KVM虚拟机/index.html">
 <meta property="og:site_name" content="Welcome to Ada's Blog">
-<meta property="og:description" content="#一.前言
-##KVM简介KVM，即Kernel-based Virtual Machine的简称，是一个开源的系统虚拟化模块，自Linux 2.6.20之后集成在Linux的各个主要发行版本中。它使用Linux自身的调度器进行管理，所以相对于Xen，其核心源码很少。KVM目前已成为学术界的主流VMM之一。KVM的虚拟化需要硬件支持（如Intel VT技术或者AMD V技术)。是基于硬件的完全虚拟">
-<meta property="og:updated_time" content="2016-09-04T13:10:41.000Z">
+<meta property="og:description" content="##一.前言
+###KVM简介KVM，即Kernel-based Virtual Machine的简称，是一个开源的系统虚拟化模块，自Linux 2.6.20之后集成在Linux的各个主要发行版本中。它使用Linux自身的调度器进行管理，所以相对于Xen，其核心源码很少。KVM目前已成为学术界的主流VMM之一。KVM的虚拟化需要硬件支持（如Intel VT技术或者AMD V技术)。是基于硬件的完全">
+<meta property="og:updated_time" content="2016-09-04T14:46:56.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="运用virt-manager封装管理KVM虚拟机">
-<meta name="twitter:description" content="#一.前言
-##KVM简介KVM，即Kernel-based Virtual Machine的简称，是一个开源的系统虚拟化模块，自Linux 2.6.20之后集成在Linux的各个主要发行版本中。它使用Linux自身的调度器进行管理，所以相对于Xen，其核心源码很少。KVM目前已成为学术界的主流VMM之一。KVM的虚拟化需要硬件支持（如Intel VT技术或者AMD V技术)。是基于硬件的完全虚拟">
+<meta name="twitter:description" content="##一.前言
+###KVM简介KVM，即Kernel-based Virtual Machine的简称，是一个开源的系统虚拟化模块，自Linux 2.6.20之后集成在Linux的各个主要发行版本中。它使用Linux自身的调度器进行管理，所以相对于Xen，其核心源码很少。KVM目前已成为学术界的主流VMM之一。KVM的虚拟化需要硬件支持（如Intel VT技术或者AMD V技术)。是基于硬件的完全">
 
 
 
@@ -279,15 +279,15 @@
       
 
       
-        <p>#一.前言</p>
-<p>##KVM简介<br>KVM，即Kernel-based Virtual Machine的简称，是一个开源的系统虚拟化模块，自Linux 2.6.20之后集成在Linux的各个主要发行版本中。它使用Linux自身的调度器进行管理，所以相对于Xen，其核心源码很少。KVM目前已成为学术界的主流VMM之一。KVM的虚拟化需要硬件支持（如Intel VT技术或者AMD V技术)。是基于硬件的完全虚拟化。</p>
-<p>##virt-manager管理虚拟化的方法<br>Virtual Machine Manager (virt-manager) 是一个轻量级应用程序套件，形式为一个管理虚拟机的命令行或图形用户界面 (GUI)。除了提供对虚拟机的管理功能之外，virt-manager 还通过一个嵌入式虚拟网络计算 (VNC) 客户端查看器为 Guest 虚拟机提供一个完整图形控制台。virt-manager 使用 libvirt 虚拟化库来管理可用的虚拟机管理程序。libvirt 公开了一个应用程序编程接口 (API)，该接口与大量开源虚拟机管理程序相集成，以实现控制和监视。libvirt 提供了一个名为 libvirtd 的守护程序，帮助实施控制和监视。作为一个应用程序套件，virt-manager 包括了一组常见的虚拟化管理工具，包括虚拟机构造、克隆、映像制作和查看。<br>virt-manager    虚拟机桌面管理工具<br>virt-install    虚拟机配给工具<br>virt-clone    虚拟机映像克隆工具<br>virt-image    从一个 XML 描述符构造虚拟机<br>virt-viewer    虚拟机图形控制台<br>virsh    virsh Guest 域的交互式终端</p>
-<p>##虚拟机的qcow2封装<br>qcow2格式为redhat官方现在比较主流的一种虚拟化镜像格式，是qemu支持的磁盘镜像格式之一，qcow2的格式可以在镜像上做很多个快照，更小的存储空间，创建成功后一系列的修改都在快照中，不会影响原镜像，原镜像可以随身携带，以便于随时使用。</p>
-<p>##Bridge网络桥接模式<br>桥接模式下，VMWare虚拟出来的操作系统就像是局域网中的一台独立的主机（主机和虚拟机处于对等地位），它可以访问网内任何一台机器。在桥接模式下，我们往往需要为虚拟主机配置ＩＰ地址、子网掩码等（注意虚拟主机的ｉｐ地址要和主机ｉｐ地址在同一网段）。使用桥接模式的虚拟系统和主机的关系，就如同连接在一个集线器上的两台电脑；要让他们通讯就需要为虚拟系统配置ip地址和子网掩码。如果我们需要在局域网内建立一个虚拟服务器，并为局域网用户提供服务，那就要选择桥接模式。但对于想进行种种网络实验的朋友这种模式是不太适合的，因为你无法对虚拟机的网络进行控制，它直接出去了。</p>
-<p>#二.环境<br>系统：rhel6.5  64位<br>物理主机CPU为AMD,系统为rhel6.5<br>软件包组：<br>    virtualization            提供虚拟机的环境，主要包含qemu-kvm<br>    virtualization-client      管理和安装虚拟机实例的客户端，主要有python-virtinst,virt-manager,virt-viewer<br>    virtualization-platform    提供访问和控制虚拟客户端的接口，主要有libvirt，libvirt-client<br>    virtualization-tools      管理离线虚拟机镜像的工具，主要有libguestfs<br>根据需求选择软件包，一般都安装前三个，也可以只安装个别主要的包。<br>为了减少不必要的麻烦，请关闭防火墙和SELinux<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># cat /proc/cpuinfo |grep flags</span></div></pre></td></tr></table></figure></p>
+        <p>##一.前言</p>
+<p>###KVM简介<br>KVM，即Kernel-based Virtual Machine的简称，是一个开源的系统虚拟化模块，自Linux 2.6.20之后集成在Linux的各个主要发行版本中。它使用Linux自身的调度器进行管理，所以相对于Xen，其核心源码很少。KVM目前已成为学术界的主流VMM之一。KVM的虚拟化需要硬件支持（如Intel VT技术或者AMD V技术)。是基于硬件的完全虚拟化。</p>
+<p>###virt-manager管理虚拟化的方法<br>Virtual Machine Manager (virt-manager) 是一个轻量级应用程序套件，形式为一个管理虚拟机的命令行或图形用户界面 (GUI)。除了提供对虚拟机的管理功能之外，virt-manager 还通过一个嵌入式虚拟网络计算 (VNC) 客户端查看器为 Guest 虚拟机提供一个完整图形控制台。virt-manager 使用 libvirt 虚拟化库来管理可用的虚拟机管理程序。libvirt 公开了一个应用程序编程接口 (API)，该接口与大量开源虚拟机管理程序相集成，以实现控制和监视。libvirt 提供了一个名为 libvirtd 的守护程序，帮助实施控制和监视。作为一个应用程序套件，virt-manager 包括了一组常见的虚拟化管理工具，包括虚拟机构造、克隆、映像制作和查看。<br>virt-manager    虚拟机桌面管理工具<br>virt-install    虚拟机配给工具<br>virt-clone    虚拟机映像克隆工具<br>virt-image    从一个 XML 描述符构造虚拟机<br>virt-viewer    虚拟机图形控制台<br>virsh    virsh Guest 域的交互式终端</p>
+<p>###虚拟机的qcow2封装<br>qcow2格式为redhat官方现在比较主流的一种虚拟化镜像格式，是qemu支持的磁盘镜像格式之一，qcow2的格式可以在镜像上做很多个快照，更小的存储空间，创建成功后一系列的修改都在快照中，不会影响原镜像，原镜像可以随身携带，以便于随时使用。</p>
+<p>###Bridge网络桥接模式<br>桥接模式下，VMWare虚拟出来的操作系统就像是局域网中的一台独立的主机（主机和虚拟机处于对等地位），它可以访问网内任何一台机器。在桥接模式下，我们往往需要为虚拟主机配置ＩＰ地址、子网掩码等（注意虚拟主机的ｉｐ地址要和主机ｉｐ地址在同一网段）。使用桥接模式的虚拟系统和主机的关系，就如同连接在一个集线器上的两台电脑；要让他们通讯就需要为虚拟系统配置ip地址和子网掩码。如果我们需要在局域网内建立一个虚拟服务器，并为局域网用户提供服务，那就要选择桥接模式。但对于想进行种种网络实验的朋友这种模式是不太适合的，因为你无法对虚拟机的网络进行控制，它直接出去了。</p>
+<p>##二.环境<br>系统：rhel6.5  64位<br>物理主机CPU为AMD,系统为rhel6.5<br>软件包组：<br>    virtualization            提供虚拟机的环境，主要包含qemu-kvm<br>    virtualization-client      管理和安装虚拟机实例的客户端，主要有python-virtinst,virt-manager,virt-viewer<br>    virtualization-platform    提供访问和控制虚拟客户端的接口，主要有libvirt，libvirt-client<br>    virtualization-tools      管理离线虚拟机镜像的工具，主要有libguestfs<br>根据需求选择软件包，一般都安装前三个，也可以只安装个别主要的包。<br>为了减少不必要的麻烦，请关闭防火墙和SELinux<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># cat /proc/cpuinfo |grep flags</span></div></pre></td></tr></table></figure></p>
 <p>需要全虚拟化支持为vmx(Inter)或svm（AMD），如果确定物理机支持cpu虚拟化技术，而使用上述命令查找不到相应指令，请参考以下解决办法:<br><a href="http://www.linuxidc.com/Linux/2014-10/107895.htm" target="_blank" rel="external">http://www.linuxidc.com/Linux/2014-10/107895.htm</a></p>
-<p>#三.安装与配置</p>
-<p>##安装virt-manager<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># yum groupinstall Virtualization Virtualization-Client Virtualization-Platform</span></div><div class="line"><span class="comment"># yum install qemu-kvm virt-manager libvirt        //也可只安装个别主要的包</span></div><div class="line"><span class="comment"># lsmod |grep kvm                                  //kvm模块一定要加载</span></div><div class="line">kvm_amd              53484  0</div><div class="line"></div><div class="line">kvm                  316506  1 kvm_amd</div><div class="line"><span class="comment"># /etc/init.d/libvirtd start                       //启动libvirt服务</span></div></pre></td></tr></table></figure></p>
+<p>##三.安装与配置</p>
+<p>###安装virt-manager<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># yum groupinstall Virtualization Virtualization-Client Virtualization-Platform</span></div><div class="line"><span class="comment"># yum install qemu-kvm virt-manager libvirt        //也可只安装个别主要的包</span></div><div class="line"><span class="comment"># lsmod |grep kvm                                  //kvm模块一定要加载</span></div><div class="line">kvm_amd              53484  0</div><div class="line"></div><div class="line">kvm                  316506  1 kvm_amd</div><div class="line"><span class="comment"># /etc/init.d/libvirtd start                       //启动libvirt服务</span></div></pre></td></tr></table></figure></p>
 
       
     </div>
