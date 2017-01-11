@@ -90,7 +90,7 @@
 <meta property="og:url" content="http://yoursite.com/python-装饰器/index.html">
 <meta property="og:site_name" content="Welcome to Ada's Blog">
 <meta property="og:description" content="前言装饰器(Dectorator),开始看到这个名词时，确实有点一头雾水，查阅了不少博客，总结如下：1.作用：概括的讲，装饰器的作用就是为已经存在的对象添加额外的功能，主要就是解 耦合。2.实质：通过装饰器，可以抽离出大量与函数功能本身无关的雷同代码并继续重用。3.特点：装饰器本身也是个函数，一个用来包装函数的函数，返回一个修改之后的函数对象，将其重新赋值原来的标识符，并永久丧失对原始函数对象的访">
-<meta property="og:updated_time" content="2017-01-11T13:41:52.000Z">
+<meta property="og:updated_time" content="2017-01-11T13:57:46.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="python-装饰器">
 <meta name="twitter:description" content="前言装饰器(Dectorator),开始看到这个名词时，确实有点一头雾水，查阅了不少博客，总结如下：1.作用：概括的讲，装饰器的作用就是为已经存在的对象添加额外的功能，主要就是解 耦合。2.实质：通过装饰器，可以抽离出大量与函数功能本身无关的雷同代码并继续重用。3.特点：装饰器本身也是个函数，一个用来包装函数的函数，返回一个修改之后的函数对象，将其重新赋值原来的标识符，并永久丧失对原始函数对象的访">
@@ -174,7 +174,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            Home
           </a>
         </li>
       
@@ -184,7 +184,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            Archives
           </a>
         </li>
       
@@ -257,7 +257,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-12-04T09:35:07+08:00" content="2016-12-04">
               2016-12-04
             </time>
@@ -288,9 +288,8 @@
       
         <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><h3 id="装饰器-Dectorator-开始看到这个名词时，确实有点一头雾水，查阅了不少博客，总结如下："><a href="#装饰器-Dectorator-开始看到这个名词时，确实有点一头雾水，查阅了不少博客，总结如下：" class="headerlink" title="装饰器(Dectorator),开始看到这个名词时，确实有点一头雾水，查阅了不少博客，总结如下："></a>装饰器(Dectorator),开始看到这个名词时，确实有点一头雾水，查阅了不少博客，总结如下：</h3><p><strong><br>1.作用：概括的讲，装饰器的作用就是为已经存在的对象添加额外的功能，主要就是解 耦合。<br>2.实质：通过装饰器，可以抽离出大量与函数功能本身无关的雷同代码并继续重用。<br>3.特点：装饰器本身也是个函数，一个用来包装函数的函数，返回一个修改之后的函数<br>对象，将其重新赋值原来的标识符，并永久丧失对原始函数对象的访问。<br>4.用处：经常用于有切面需求的场景，比如：插入日志、性能测试、事务处理、缓存、<br>权限校验等场景
 </strong></p>
-<p>###以下插入日志和添加计算函数时间为例:</p>
-<h4 id="1-简单装饰器"><a href="#1-简单装饰器" class="headerlink" title="1.简单装饰器"></a>1.简单装饰器</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"> 1 <span class="comment">#!/usr/bin/env python</span></div><div class="line"> 2 <span class="comment">#coding=utf-8</span></div><div class="line"> 3 import time</div><div class="line"> 4 import datetime</div><div class="line"> 5 </div><div class="line"> 6 <span class="comment">#计算一个函数的执行时间</span></div><div class="line"> 7 <span class="comment">#1.简单装饰器</span></div><div class="line"> 8 </div><div class="line"> 9 def timeIt(func): <span class="comment">#timeIt为装饰函数</span></div><div class="line">10     def warp(arg):</div><div class="line">11         start = datetime.datetime.now()</div><div class="line">12         func(arg)</div><div class="line">13         end = datetime.datetime.now()</div><div class="line">14         cost = end - start</div><div class="line">15         <span class="built_in">print</span> <span class="string">"execute %s spend %s"</span> % (func.__name__, cost.total_seconds())</div><div class="line">16     <span class="built_in">return</span> warp</div><div class="line">17 </div><div class="line">18 def func(arg):  <span class="comment">#func()为被装饰函数</span></div><div class="line">19     time.sleep(arg)</div><div class="line">20 </div><div class="line">21 new_func = timeIt(func) <span class="comment">#返回一个新的函数，被装饰后的函数new_func()</span></div><div class="line">22 new_func(3) <span class="comment">#调用新的函数，并传值进去</span></div><div class="line">23 <span class="built_in">print</span> new_func.__name__</div></pre></td></tr></table></figure>
-<h4 id="2-使用python提供的语法糖"><a href="#2-使用python提供的语法糖" class="headerlink" title="2.使用python提供的语法糖"></a>2.使用python提供的语法糖</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"> 1 #!/usr/bin/env python</div><div class="line"> 2 #coding=utf-8</div><div class="line"> 3 </div><div class="line"> 4 import time</div><div class="line"> 5 import datetime</div><div class="line"> 6 import functools</div><div class="line"> 7 </div><div class="line"> 8 #2.使用装饰器的语法糖@</div><div class="line"> 9 def timeIt(func):</div><div class="line">10 #    @functools.wraps(func) #增加这一行，将原函数作为值传递进去，表示将原函&gt;    数的__name__,__module__,__doc__信息更新到装饰器里</div><div class="line">11     def warp(arg):</div><div class="line">12         start = datetime.datetime.now()</div><div class="line">13         func(arg)</div><div class="line">14         end = datetime.datetime.now()</div><div class="line">15         count = end - start</div><div class="line">16         print &quot;execute %s spend %s&quot; %(func.__name__, count.total_seconds())</div><div class="line">17     return warp</div><div class="line">18 </div><div class="line">19 @timeIt #@python提供的一个语法糖</div><div class="line">20 def func(arg):</div><div class="line">21     time.sleep(arg)</div><div class="line">22 </div><div class="line">23 func(3)</div><div class="line">24 print func.__name__</div></pre></td></tr></table></figure>
+<h2 id="以下插入日志和添加计算函数时间为例"><a href="#以下插入日志和添加计算函数时间为例" class="headerlink" title="以下插入日志和添加计算函数时间为例:"></a>以下插入日志和添加计算函数时间为例:</h2><h3 id="1-简单装饰器"><a href="#1-简单装饰器" class="headerlink" title="1.简单装饰器"></a>1.简单装饰器</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!/usr/bin/env python</span></div><div class="line"><span class="comment">#coding=utf-8</span></div><div class="line">import time</div><div class="line">import datetime</div><div class="line"></div><div class="line"><span class="comment">#计算一个函数的执行时间</span></div><div class="line"><span class="comment">#1.简单装饰器</span></div><div class="line"> </div><div class="line"> </div><div class="line">def timeIt(func): <span class="comment">#timeIt为装饰函数</span></div><div class="line">    def warp(arg):</div><div class="line">        start = datetime.datetime.now()</div><div class="line">        func(arg)</div><div class="line">        end = datetime.datetime.now()</div><div class="line">        cost = end - start</div><div class="line">        <span class="built_in">print</span> <span class="string">"execute %s spend %s"</span> % (func.__name__, cost.total_seconds())</div><div class="line">    <span class="built_in">return</span> warp</div><div class="line"></div><div class="line">def func(arg):  <span class="comment">#func()为被装饰函数</span></div><div class="line">    time.sleep(arg)</div><div class="line"></div><div class="line">new_func = timeIt(func) <span class="comment">#返回一个新的函数，被装饰后的函数new_func()</span></div><div class="line">new_func(3) <span class="comment">#调用新的函数，并传值进去</span></div><div class="line"><span class="built_in">print</span> new_func.__name__</div></pre></td></tr></table></figure>
+<h3 id="2-使用python提供的语法糖"><a href="#2-使用python提供的语法糖" class="headerlink" title="2.使用python提供的语法糖"></a>2.使用python提供的语法糖</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">#!/usr/bin/env python</div><div class="line">#coding=utf-8</div><div class="line"></div><div class="line">import time</div><div class="line">import datetime</div><div class="line">import functools</div><div class="line"></div><div class="line">#2.使用装饰器的语法糖@</div><div class="line">def timeIt(func):</div><div class="line">#    @functools.wraps(func) #增加这一行，将原函数作为值传递进去，表示将原函&gt;    数的__name__,__module__,__doc__信息更新到装饰器里</div><div class="line">    def warp(arg):</div><div class="line">        start = datetime.datetime.now()</div><div class="line">        func(arg)</div><div class="line">        end = datetime.datetime.now()</div><div class="line">        count = end - start</div><div class="line">        print &quot;execute %s spend %s&quot; %(func.__name__, count.total_seconds())</div><div class="line">    return warp</div><div class="line"></div><div class="line">@timeIt #@python提供的一个语法糖</div><div class="line">def func(arg):</div><div class="line">    time.sleep(arg)</div><div class="line"></div><div class="line">func(3)</div><div class="line">print func.__name__</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -375,10 +374,10 @@
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            Inhaltsverzeichnis
+            Table of Contents
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
-            Übersicht
+            Overview
           </li>
         </ul>
       
@@ -395,7 +394,7 @@
           <div class="site-state-item site-state-posts">
             <a href="/archives">
               <span class="site-state-item-count">5</span>
-              <span class="site-state-item-name">Artikel</span>
+              <span class="site-state-item-name">posts</span>
             </a>
           </div>
 
@@ -426,7 +425,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#装饰器-Dectorator-开始看到这个名词时，确实有点一头雾水，查阅了不少博客，总结如下："><span class="nav-number">1.1.</span> <span class="nav-text">装饰器(Dectorator),开始看到这个名词时，确实有点一头雾水，查阅了不少博客，总结如下：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-简单装饰器"><span class="nav-number">1.1.1.</span> <span class="nav-text">1.简单装饰器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-使用python提供的语法糖"><span class="nav-number">1.1.2.</span> <span class="nav-text">2.使用python提供的语法糖</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#装饰器-Dectorator-开始看到这个名词时，确实有点一头雾水，查阅了不少博客，总结如下："><span class="nav-number">1.1.</span> <span class="nav-text">装饰器(Dectorator),开始看到这个名词时，确实有点一头雾水，查阅了不少博客，总结如下：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#以下插入日志和添加计算函数时间为例"><span class="nav-number">2.</span> <span class="nav-text">以下插入日志和添加计算函数时间为例:</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-简单装饰器"><span class="nav-number">2.1.</span> <span class="nav-text">1.简单装饰器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-使用python提供的语法糖"><span class="nav-number">2.2.</span> <span class="nav-text">2.使用python提供的语法糖</span></a></li></ol></li></ol></div>
             
           </div>
         </section>
@@ -455,7 +454,7 @@
 </div>
 
 <div class="powered-by">
-  Erstellt mit  <a class="theme-link" href="http://hexo.io">Hexo</a>
+  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
