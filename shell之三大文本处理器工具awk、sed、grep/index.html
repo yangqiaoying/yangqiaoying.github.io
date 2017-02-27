@@ -94,7 +94,7 @@ sed：Strea">
 <meta property="og:description" content="前言* grep查找，sed编辑，awk根据内容分析并处理 **awk、sed和grep都是linux下的文本管理处理工具，他们各司其职且功能强大。只不过，相比较而言，awk和sed的功能更为强大，尤其是awk，已成为一种独立的语言。
 awk：报告生成器，是一种程序语言，擅长从格式化报文或从一个大的文本文件中抽取数据;awk按列（域）操作（也可按行操作），适合对文件的抽取整理。
 sed：Strea">
-<meta property="og:updated_time" content="2017-02-26T13:26:41.000Z">
+<meta property="og:updated_time" content="2017-02-27T02:11:42.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="shell之三大文本处理器工具awk、sed、grep">
 <meta name="twitter:description" content="前言* grep查找，sed编辑，awk根据内容分析并处理 **awk、sed和grep都是linux下的文本管理处理工具，他们各司其职且功能强大。只不过，相比较而言，awk和sed的功能更为强大，尤其是awk，已成为一种独立的语言。
@@ -180,7 +180,7 @@ sed：Strea">
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            Home
           </a>
         </li>
       
@@ -190,7 +190,7 @@ sed：Strea">
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            Archives
           </a>
         </li>
       
@@ -263,7 +263,7 @@ sed：Strea">
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2017-02-26T20:16:45+08:00" content="2017-02-26">
               2017-02-26
             </time>
@@ -296,8 +296,7 @@ sed：Strea">
 <p><code>awk</code>：报告生成器，是一种程序语言，擅长从格式化报文或从一个大的文本文件中抽取数据;awk按列（域）操作（也可按行操作），适合对文件的抽取整理。</p>
 <p><code>sed</code>：Stream Editor，非交互性文本流编辑器，他编辑文件或标准输入导出的文本拷贝，sed按行操作，可以直接修改档案;<br>sed默认只处理模式空间，不处理原数据（sed把当前正在处理的行保存在一个临时缓存里，这个缓存叫做模式空间。一但sed完成了对模式空间里的行的处理（即对该行执行sed命令），就把模式空间的行送到屏幕上（除非该命令要删除该行或禁止打印）。处理完该行之后，从模式空间里删除它，然后把下一行读入模式空间，进行处理，并显示。当输入文件的最后一行处理完后，sed终止。通过把每一行存在一个临时缓存里并编辑该行，初始文件不会被修改或被破坏。）</p>
 <p><code>grep</code>：文本过滤器，结合正则表达式搜索文本并把匹配的行打印出来，功能非常强大。</p>
-<h2 id="awk-关键字：分析-amp-处理"><a href="#awk-关键字：分析-amp-处理" class="headerlink" title="awk(关键字：分析&amp;处理)"></a>awk(关键字：分析&amp;处理)</h2><h3 id="使用规则"><a href="#使用规则" class="headerlink" title="使用规则"></a>使用规则</h3><p><strong> awk ‘条件类型1{动作1}条件类型2{动作2}’ filename<br>awk 也可以读取来自前一个指令的 standard input,相对于sed常常用于一整行处理, awk则比较倾向于一行当中分成数个”字段”(区域)来处理, 默认的分隔符是空格键或tab键
-</strong></p>
+<h2 id="awk-关键字：分析-amp-处理"><a href="#awk-关键字：分析-amp-处理" class="headerlink" title="awk(关键字：分析&amp;处理)"></a>awk(关键字：分析&amp;处理)</h2><h3 id="使用规则"><a href="#使用规则" class="headerlink" title="使用规则"></a>使用规则</h3><p><strong> awk ‘条件类型1{动作1}条件类型2{动作2}’ filename </strong><br>awk 也可以读取来自前一个指令的 standard input,相对于sed常常用于一整行处理, awk则比较倾向于一行当中分成数个”字段”(区域)来处理, 默认的分隔符是空格键或tab键</p>
 <h3 id="入门实例"><a href="#入门实例" class="headerlink" title="入门实例"></a>入门实例</h3><p><strong> awk ‘{FS=”:”} {print $1}’ test1 </strong><br><strong> awk ‘{print $1 “\t” $2}’ test1 </strong><br><strong> cat /etc/passwd | awk -F ‘:’ ‘{print $1 “\t” $7}’ </strong><br><strong> cat /etc/passwd | awk -F ‘:’ ‘BEGIN {print “name,shell”} {print $1 “,” $7} END {print “yqy,comeon!”}’ </strong><br><strong> awk -F: ‘/root/‘ /etc/passwd </strong><br><strong> awk -F: ‘/root/{print $7}’ /etc/passwd </strong><br><strong> awk -F: ‘{print “filename:” FILENAME “,linenumber:” NR “,columns:” NF “,linecontent:” $0}’ /etc/passwd </strong><br><strong> awk -F: ‘{print(“filename:%10s,linenumber:%s,columns:%s,linecontent:%s\n”,FILENAME,NR,NF,$0)}’ /etc/passwd </strong><br><strong> awk ‘{count++;print $0;} END{print “user count is “, count}’ /etc/passwd </strong></p>
 
       
@@ -379,10 +378,10 @@ sed：Strea">
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            Inhaltsverzeichnis
+            Table of Contents
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
-            Übersicht
+            Overview
           </li>
         </ul>
       
@@ -399,7 +398,7 @@ sed：Strea">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
               <span class="site-state-item-count">6</span>
-              <span class="site-state-item-name">Artikel</span>
+              <span class="site-state-item-name">posts</span>
             </a>
           </div>
 
@@ -459,7 +458,7 @@ sed：Strea">
 </div>
 
 <div class="powered-by">
-  Erstellt mit  <a class="theme-link" href="http://hexo.io">Hexo</a>
+  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
