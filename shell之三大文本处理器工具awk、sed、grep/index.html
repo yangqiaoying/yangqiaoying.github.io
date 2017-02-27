@@ -94,7 +94,7 @@ sed：Stream E">
 <meta property="og:description" content="前言 grep查找，sed编辑，awk根据内容分析并处理 awk、sed和grep都是linux下的文本管理处理工具，他们各司其职且功能强大。只不过，相比较而言，awk和sed的功能更为强大，尤其是awk，已成为一种独立的语言。
 awk：报告生成器，是一种程序语言，擅长从格式化报文或从一个大的文本文件中抽取数据;awk按列（域）操作（也可按行操作），适合对文件的抽取整理。
 sed：Stream E">
-<meta property="og:updated_time" content="2017-02-27T04:23:48.000Z">
+<meta property="og:updated_time" content="2017-02-27T04:27:56.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="shell之三大文本处理器工具awk、sed、grep">
 <meta name="twitter:description" content="前言 grep查找，sed编辑，awk根据内容分析并处理 awk、sed和grep都是linux下的文本管理处理工具，他们各司其职且功能强大。只不过，相比较而言，awk和sed的功能更为强大，尤其是awk，已成为一种独立的语言。
@@ -311,7 +311,7 @@ sed：Stream E">
 <p>10.<strong> awk ‘BEGIN {count=0;print “[start]user count is “, count} {count=count+1;print $0;} END{print “[end]user count is “, count}’ /etc/passwd </strong><br>初始化count，虽然默认是0,但稳妥的做法还是需进行初始化</p>
 <p>11.<strong> ls -l |awk ‘BEGIN {size=0;} {size=size+$5;} END{print “[end]size is “, size}’ </strong><br>统计某个文件夹下的文件占用的字节数</p>
 <p>12.<strong> ls -l |awk ‘BEGIN {size=0;} {size=size+$5;} END{print “[end]size is “, size/1024/1024,”M”}’ </strong><br>统计结果以M为单位显示，统计不包括文件夹的子目录。</p>
-
+<h2 id="sed-关键字：编辑"><a href="#sed-关键字：编辑" class="headerlink" title="sed(关键字：编辑)"></a>sed(关键字：编辑)</h2><h2 id="grep-关键字：截取"><a href="#grep-关键字：截取" class="headerlink" title="grep(关键字：截取)"></a>grep(关键字：截取)</h2>
       
     </div>
 
@@ -442,7 +442,7 @@ sed：Stream E">
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#awk-关键字：分析-amp-处理"><span class="nav-number">2.</span> <span class="nav-text">awk(关键字：分析&处理)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#使用规则"><span class="nav-number">2.1.</span> <span class="nav-text">使用规则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#awk内置变量"><span class="nav-number">2.2.</span> <span class="nav-text">awk内置变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#awk工作流程"><span class="nav-number">2.3.</span> <span class="nav-text">awk工作流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#入门实例"><span class="nav-number">2.4.</span> <span class="nav-text">入门实例</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#awk-关键字：分析-amp-处理"><span class="nav-number">2.</span> <span class="nav-text">awk(关键字：分析&处理)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#使用规则"><span class="nav-number">2.1.</span> <span class="nav-text">使用规则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#awk内置变量"><span class="nav-number">2.2.</span> <span class="nav-text">awk内置变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#awk工作流程"><span class="nav-number">2.3.</span> <span class="nav-text">awk工作流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#入门实例"><span class="nav-number">2.4.</span> <span class="nav-text">入门实例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sed-关键字：编辑"><span class="nav-number">3.</span> <span class="nav-text">sed(关键字：编辑)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#grep-关键字：截取"><span class="nav-number">4.</span> <span class="nav-text">grep(关键字：截取)</span></a></li></ol></div>
             
           </div>
         </section>
