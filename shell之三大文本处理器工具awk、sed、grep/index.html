@@ -94,7 +94,7 @@ sed：Stream E">
 <meta property="og:description" content="前言 grep查找，sed编辑，awk根据内容分析并处理 awk、sed和grep都是linux下的文本管理处理工具，他们各司其职且功能强大。只不过，相比较而言，awk和sed的功能更为强大，尤其是awk，已成为一种独立的语言。
 awk：报告生成器，是一种程序语言，擅长从格式化报文或从一个大的文本文件中抽取数据;awk按列（域）操作（也可按行操作），适合对文件的抽取整理。
 sed：Stream E">
-<meta property="og:updated_time" content="2017-02-27T04:19:03.000Z">
+<meta property="og:updated_time" content="2017-02-27T04:23:48.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="shell之三大文本处理器工具awk、sed、grep">
 <meta name="twitter:description" content="前言 grep查找，sed编辑，awk根据内容分析并处理 awk、sed和grep都是linux下的文本管理处理工具，他们各司其职且功能强大。只不过，相比较而言，awk和sed的功能更为强大，尤其是awk，已成为一种独立的语言。
@@ -180,7 +180,7 @@ sed：Stream E">
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Home
+            Startseite
           </a>
         </li>
       
@@ -190,7 +190,7 @@ sed：Stream E">
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archives
+            Archiv
           </a>
         </li>
       
@@ -263,7 +263,7 @@ sed：Stream E">
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2017-02-26T20:16:45+08:00" content="2017-02-26">
               2017-02-26
             </time>
@@ -297,7 +297,7 @@ sed：Stream E">
 <p><code>sed</code>：Stream Editor，非交互性文本流编辑器，他编辑文件或标准输入导出的文本拷贝，sed按行操作，可以直接修改档案;<br>sed默认只处理模式空间，不处理原数据（sed把当前正在处理的行保存在一个临时缓存里，这个缓存叫做模式空间。一但sed完成了对模式空间里的行的处理（即对该行执行sed命令），就把模式空间的行送到屏幕上（除非该命令要删除该行或禁止打印）。处理完该行之后，从模式空间里删除它，然后把下一行读入模式空间，进行处理，并显示。当输入文件的最后一行处理完后，sed终止。通过把每一行存在一个临时缓存里并编辑该行，初始文件不会被修改或被破坏。）</p>
 <p><code>grep</code>：文本过滤器，结合正则表达式搜索文本并把匹配的行打印出来，功能非常强大。</p>
 <h2 id="awk-关键字：分析-amp-处理"><a href="#awk-关键字：分析-amp-处理" class="headerlink" title="awk(关键字：分析&amp;处理)"></a>awk(关键字：分析&amp;处理)</h2><h3 id="使用规则"><a href="#使用规则" class="headerlink" title="使用规则"></a>使用规则</h3><p><strong> awk ‘条件类型1{动作1}条件类型2{动作2}’ filename </strong><br>awk 也可以读取来自前一个指令的 standard input,相对于sed常常用于一整行处理, awk则比较倾向于一行当中分成数个”字段”(区域)来处理, 默认的分隔符是空格键或tab键<br>AWK一次处理是一行, 而一次中处理的最小单位是一个区域</p>
-<h3 id="awk内置变量"><a href="#awk内置变量" class="headerlink" title="awk内置变量"></a>awk内置变量</h3><p><code>FS</code>        设置输入域分隔符，等价于命令行-F选项<br><code>NF</code>        浏览记录的域的个数，即每一行处理的字段数<br><code>NR</code>        目前处理到第几行<br><code>OFS</code>       输出域分隔符<br><code>ORS</code>       输出记录分隔符<br><code>RS</code>        控制记录分隔符<br><code>ARGC</code>      命令行参数个数<br><code>ARGV</code>      命令行参数排列<br><code>ENVIRON</code>   支持队列中系统环境变量的使用<br><code>FILENAME</code>  awk分析处理的文件名<br><code>FNR</code>       浏览文件的记录数<br><code>&gt; &lt; &gt;= &lt;= == !==</code>      逻辑判断<br><code>=</code>         赋值（是动作，需写在{}内）<br>除了awk的内置变量，awk还可以自定义变量</p>
+<h3 id="awk内置变量"><a href="#awk内置变量" class="headerlink" title="awk内置变量"></a>awk内置变量</h3><p><code>FS</code>        &nbsp;设置输入域分隔符，等价于命令行-F选项<br><code>NF</code>        &nbsp;浏览记录的域的个数，即每一行处理的字段数<br><code>NR</code>        &nbsp;目前处理到第几行<br><code>OFS</code>       &nbsp;输出域分隔符<br><code>ORS</code>       &nbsp;输出记录分隔符<br><code>RS</code>        &nbsp;控制记录分隔符<br><code>ARGC</code>      &nbsp;命令行参数个数<br><code>ARGV</code>      &nbsp;命令行参数排列<br><code>ENVIRON</code>   &nbsp;支持队列中系统环境变量的使用<br><code>FILENAME</code>  &nbsp;awk分析处理的文件名<br><code>FNR</code>       &nbsp;浏览文件的记录数<br><code>&gt; &lt; &gt;= &lt;= == !==</code>      &nbsp;逻辑判断<br><code>=</code>         &nbsp;赋值（是动作，需写在{}内）<br>除了awk的内置变量，awk还可以自定义变量</p>
 <h3 id="awk工作流程"><a href="#awk工作流程" class="headerlink" title="awk工作流程"></a>awk工作流程</h3><p>读入有’\n’换行符分割的一条记录，然后将记录按指定的域分隔符划分域，填充域，$0表示所有域，$1表示第一个域，以此类推…$n表示第n个域;<br>注意的是，当某一行的$1为空时，$2会充当该行的$1,$3也随之变为$2,以此类推。<br>BEGIN END , 给程序员一个初始化和收尾的工作, BEGIN之后列出的操作在{}内将在awk开始扫描输入之前执行, 而END{}内的操作, 将在扫描完输入文件后执行.<br>awk的很多用法都等同于C语言, 比如”\t” 分隔符, print的格式</p>
 <h3 id="入门实例"><a href="#入门实例" class="headerlink" title="入门实例"></a>入门实例</h3><p>1.<strong> last -n 5 | awk ‘{print $1}’</strong>     &nbsp; 显示最近登录的5个帐号</p>
 <p>2.<strong> cat /etc/passwd | awk -F ‘:’ ‘{print $1 “\t” $7}’ </strong><br>显示/etc/passwd的账户和账户对应的shell,账户与shell之间以tab键分割</p>
@@ -391,10 +391,10 @@ sed：Stream E">
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            Table of Contents
+            Inhaltsverzeichnis
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
-            Overview
+            Übersicht
           </li>
         </ul>
       
@@ -411,7 +411,7 @@ sed：Stream E">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
               <span class="site-state-item-count">6</span>
-              <span class="site-state-item-name">posts</span>
+              <span class="site-state-item-name">Artikel</span>
             </a>
           </div>
 
@@ -471,7 +471,7 @@ sed：Stream E">
 </div>
 
 <div class="powered-by">
-  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
+  Erstellt mit  <a class="theme-link" href="http://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
