@@ -94,7 +94,7 @@ sed：Stream E">
 <meta property="og:description" content="前言 grep查找，sed编辑，awk根据内容分析并处理 awk、sed和grep都是linux下的文本管理处理工具，他们各司其职且功能强大。只不过，相比较而言，awk和sed的功能更为强大，尤其是awk，已成为一种独立的语言。
 awk：报告生成器，是一种程序语言，擅长从格式化报文或从一个大的文本文件中抽取数据;awk按列（域）操作（也可按行操作），适合对文件的抽取整理。
 sed：Stream E">
-<meta property="og:updated_time" content="2017-02-27T03:51:30.000Z">
+<meta property="og:updated_time" content="2017-02-27T04:00:31.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="shell之三大文本处理器工具awk、sed、grep">
 <meta name="twitter:description" content="前言 grep查找，sed编辑，awk根据内容分析并处理 awk、sed和grep都是linux下的文本管理处理工具，他们各司其职且功能强大。只不过，相比较而言，awk和sed的功能更为强大，尤其是awk，已成为一种独立的语言。
@@ -180,7 +180,7 @@ sed：Stream E">
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            Home
           </a>
         </li>
       
@@ -190,7 +190,7 @@ sed：Stream E">
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            Archives
           </a>
         </li>
       
@@ -263,7 +263,7 @@ sed：Stream E">
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2017-02-26T20:16:45+08:00" content="2017-02-26">
               2017-02-26
             </time>
@@ -299,7 +299,7 @@ sed：Stream E">
 <h2 id="awk-关键字：分析-amp-处理"><a href="#awk-关键字：分析-amp-处理" class="headerlink" title="awk(关键字：分析&amp;处理)"></a>awk(关键字：分析&amp;处理)</h2><h3 id="使用规则"><a href="#使用规则" class="headerlink" title="使用规则"></a>使用规则</h3><p><strong> awk ‘条件类型1{动作1}条件类型2{动作2}’ filename </strong><br>awk 也可以读取来自前一个指令的 standard input,相对于sed常常用于一整行处理, awk则比较倾向于一行当中分成数个”字段”(区域)来处理, 默认的分隔符是空格键或tab键<br>AWK一次处理是一行, 而一次中处理的最小单位是一个区域</p>
 <h3 id="awk内置变量"><a href="#awk内置变量" class="headerlink" title="awk内置变量"></a>awk内置变量</h3><p><code>FS</code>        设置输入域分隔符，等价于命令行-F选项<br><code>NF</code>        浏览记录的域的个数，即每一行处理的字段数<br><code>NR</code>        目前处理到第几行<br><code>OFS</code>       输出域分隔符<br><code>ORS</code>       输出记录分隔符<br><code>RS</code>        控制记录分隔符<br><code>ARGC</code>      命令行参数个数<br><code>ARGV</code>      命令行参数排列<br><code>ENVIRON</code>   支持队列中系统环境变量的使用<br><code>FILENAME</code>  awk分析处理的文件名<br><code>FNR</code>       浏览文件的记录数<br><code>&gt; &lt; &gt;= &lt;= == !==</code>      逻辑判断<br><code>=</code>         赋值（是动作，需写在{}内）<br>除了awk的内置变量，awk还可以自定义变量</p>
 <h3 id="awk工作流程"><a href="#awk工作流程" class="headerlink" title="awk工作流程"></a>awk工作流程</h3><p>读入有’\n’换行符分割的一条记录，然后将记录按指定的域分隔符划分域，填充域，$0表示所有域，$1表示第一个域，以此类推…$n表示第n个域;<br>注意的是，当某一行的$1为空时，$2会充当该行的$1,$3也随之变为$2,以此类推。<br>BEGIN END , 给程序员一个初始化和收尾的工作, BEGIN之后列出的操作在{}内将在awk开始扫描输入之前执行, 而END{}内的操作, 将在扫描完输入文件后执行.<br>awk的很多用法都等同于C语言, 比如”\t” 分隔符, print的格式</p>
-<h3 id="入门实例"><a href="#入门实例" class="headerlink" title="入门实例"></a>入门实例</h3><p><strong> last -n 5 | awk ‘{print $1}’</strong>   显示最近登录的5个帐号<br><strong> cat /etc/passwd | awk -F ‘:’ ‘{print $1 “\t” $7}’ </strong>         显示/etc/passwd的账户和账户对应的shell,账户与shell之间以tab键分割<br><strong> cat /etc/passwd | awk -F ‘:’ ‘BEGIN {print “name,shell”} {print $1 “,” $7} END {print “yqy,comeon!”}’    显示/etc/passwd的账户和账户对应的shell,而账户与shell之间以逗号分割,而且在所有行添加列名name,shell,在最后一行添加”yqy，comeon！”。</strong><br><strong> awk ‘{FS=”:”} {print $1}’ /etc/passwd </strong>       以：为分隔符，搜索/etc/passwd的账户<br><strong> awk -F: ‘/root/‘ /etc/passwd </strong>      以：为分隔符，搜索/etc/passwd有root关键字的所有行，搜索支持正则，例如找root开头的: awk -F: ‘/^root/‘ /etc/passwd<br><strong> awk -F: ‘/root/{print $7}’ /etc/passwd </strong>    搜索/etc/passwd有root关键字的所有行，并显示对应的shell<br><strong> awk -F: ‘{print “filename:” FILENAME “,linenumber:” NR “,columns:” NF “,linecontent:” $0}’ /etc/passwd </strong>    统计/etc/passwd:文件名，每行的行号，每行的列数，对应的完整行内容<br><strong> awk -F: ‘{print(“filename:%10s,linenumber:%s,columns:%s,linecontent:%s\n”,FILENAME,NR,NF,$0)}’ /etc/passwd </strong>    使用printf替代print,可以让代码更加简洁，易读<br><strong> awk ‘{count++;print $0;} END{print “user count is “, count}’ /etc/passwd </strong>      统计/etc/passwd的账户人数，count是自定义变量。之前的action{}里都是只有一个print,其实print只是一个语句，而action{}可以有多个语句，以;号隔开。<br><strong> awk ‘BEGIN {count=0;print “[start]user count is “, count} {count=count+1;print $0;} END{print “[end]user count is “, count}’ /etc/passwd </strong>  初始化count，虽然默认是0,但稳妥的做法还是需进行初始化<br><strong> ls -l |awk ‘BEGIN {size=0;} {size=size+$5;} END{print “[end]size is “, size}’ </strong>     统计某个文件夹下的文件占用的字节数<br><strong> ls -l |awk ‘BEGIN {size=0;} {size=size+$5;} END{print “[end]size is “, size/1024/1024,”M”}’ </strong>   统计结果以M为单位显示，统计不包括文件夹的子目录。</p>
+<h3 id="入门实例"><a href="#入门实例" class="headerlink" title="入门实例"></a>入门实例</h3><p>1.<strong> last -n 5 | awk ‘{print $1}’</strong>   显示最近登录的5个帐号<br>2.<strong> cat /etc/passwd | awk -F ‘:’ ‘{print $1 “\t” $7}’ </strong>         显示/etc/passwd的账户和账户对应的shell,账户与shell之间以tab键分割<br>3.<strong> cat /etc/passwd | awk -F ‘:’ ‘BEGIN {print “name,shell”} {print $1 “,” $7} END {print “yqy,comeon!”}’ </strong>    显示/etc/passwd的账户和账户对应的shell,而账户与shell之间以逗号分割,而且在所有行添加列名name,shell,在最后一行添加”yqy，comeon！”。<br>4.<strong> awk ‘{FS=”:”} {print $1}’ /etc/passwd </strong>       以：为分隔符，搜索/etc/passwd的账户<br>5.<strong> awk -F: ‘/root/‘ /etc/passwd </strong>      以：为分隔符，搜索/etc/passwd有root关键字的所有行，搜索支持正则，例如找root开头的: awk -F: ‘/^root/‘ /etc/passwd<br>6.<strong> awk -F: ‘/root/{print $7}’ /etc/passwd </strong>    搜索/etc/passwd有root关键字的所有行，并显示对应的shell<br>7.<strong> awk -F: ‘{print “filename:” FILENAME “,linenumber:” NR “,columns:” NF “,linecontent:” $0}’ /etc/passwd </strong>    统计/etc/passwd:文件名，每行的行号，每行的列数，对应的完整行内容<br>8.<strong> awk -F: ‘{print(“filename:%10s,linenumber:%s,columns:%s,linecontent:%s\n”,FILENAME,NR,NF,$0)}’ /etc/passwd </strong>    使用printf替代print,可以让代码更加简洁，易读<br>9.<strong> awk ‘{count++;print $0;} END{print “user count is “, count}’ /etc/passwd </strong>      统计/etc/passwd的账户人数，count是自定义变量。之前的action{}里都是只有一个print,其实print只是一个语句，而action{}可以有多个语句，以;号隔开。<br>10.<strong> awk ‘BEGIN {count=0;print “[start]user count is “, count} {count=count+1;print $0;} END{print “[end]user count is “, count}’ /etc/passwd </strong>  初始化count，虽然默认是0,但稳妥的做法还是需进行初始化<br>11.<strong> ls -l |awk ‘BEGIN {size=0;} {size=size+$5;} END{print “[end]size is “, size}’ </strong>     统计某个文件夹下的文件占用的字节数<br>12.<strong> ls -l |awk ‘BEGIN {size=0;} {size=size+$5;} END{print “[end]size is “, size/1024/1024,”M”}’ </strong>   统计结果以M为单位显示，统计不包括文件夹的子目录。</p>
 
       
     </div>
@@ -380,10 +380,10 @@ sed：Stream E">
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            Inhaltsverzeichnis
+            Table of Contents
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
-            Übersicht
+            Overview
           </li>
         </ul>
       
@@ -400,7 +400,7 @@ sed：Stream E">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
               <span class="site-state-item-count">6</span>
-              <span class="site-state-item-name">Artikel</span>
+              <span class="site-state-item-name">posts</span>
             </a>
           </div>
 
@@ -460,7 +460,7 @@ sed：Stream E">
 </div>
 
 <div class="powered-by">
-  Erstellt mit  <a class="theme-link" href="http://hexo.io">Hexo</a>
+  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
