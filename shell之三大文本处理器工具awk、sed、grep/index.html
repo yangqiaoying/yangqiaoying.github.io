@@ -94,7 +94,7 @@ sed：Stream E">
 <meta property="og:description" content="前言 grep查找，sed编辑，awk根据内容分析并处理 awk、sed和grep都是linux下的文本管理处理工具，他们各司其职且功能强大。只不过，相比较而言，awk和sed的功能更为强大，尤其是awk，已成为一种独立的语言。
 awk：报告生成器，是一种程序语言，擅长从格式化报文或从一个大的文本文件中抽取数据;awk按列（域）操作（也可按行操作），适合对文件的抽取整理。
 sed：Stream E">
-<meta property="og:updated_time" content="2017-03-15T11:27:37.000Z">
+<meta property="og:updated_time" content="2017-03-15T12:32:22.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="shell之三大文本处理器工具awk、sed、grep">
 <meta name="twitter:description" content="前言 grep查找，sed编辑，awk根据内容分析并处理 awk、sed和grep都是linux下的文本管理处理工具，他们各司其职且功能强大。只不过，相比较而言，awk和sed的功能更为强大，尤其是awk，已成为一种独立的语言。
@@ -334,12 +334,28 @@ sed：Stream E">
 <li><strong> sed -i ‘/three/a hello’ test1 </strong><br>在匹配到three字符的后一行添加hello这一行</li>
 <li><strong> sed -i ‘/five/a\hello\nI am fine’ test1 </strong><br>添加多行需要用\n来转义</li>
 <li><strong> sed -i ‘s/^/#/‘  test1 </strong><br>在test1文件前的每一行添加#，行尾添加为：sed -i ‘s/$/ End/‘ test1,即在每行行尾添加End字符</li>
-<li><strong> sed -i ‘1,3s/^/#/‘  test1 *</strong><br>对test文件的1,2,3行进行注释</li>
+<li><strong> sed -i ‘1,3s/^/#/‘  test1 </strong><br>对test文件的1,2,3行进行注释</li>
 <li><strong> sed ‘2,4d’ test1 </strong><br>删除文件test1的2,3,4行</li>
 <li><strong> sed -i ‘/End$/d’ test1 </strong><br>删除以End结尾的所有行</li>
 </ol>
 <p>太多啦！详情参阅：<a href="http://www.cnblogs.com/ctaixw/p/5860221.html" target="_blank" rel="external">http://www.cnblogs.com/ctaixw/p/5860221.html</a></p>
-<h2 id="grep-关键字：截取"><a href="#grep-关键字：截取" class="headerlink" title="grep(关键字：截取)"></a>grep(关键字：截取)</h2>
+<h2 id="grep-关键字：截取"><a href="#grep-关键字：截取" class="headerlink" title="grep(关键字：截取)"></a>grep(关键字：截取)</h2><h3 id="使用规则-2"><a href="#使用规则-2" class="headerlink" title="使用规则"></a>使用规则</h3><p><strong> grep [-acinv] [–color=auto] ‘搜寻字符串’ filename </strong></p>
+<h3 id="选项与参数"><a href="#选项与参数" class="headerlink" title="选项与参数"></a>选项与参数</h3><p><code>-a</code> : 将binary文件以text文件的方式截取数据<br><code>-c</code> : 计算找到’搜索字符串‘的次数<br><code>-i</code> : 忽略大小写的不同<br><code>-n</code> : 顺便输出行好<br><code>-v</code> : 反向选择,即显示没有匹配到的字符<br><code>--color=auto</code> : 将截取到关键词部分加上颜色显示</p>
+<h3 id="应用实例-1"><a href="#应用实例-1" class="headerlink" title="应用实例"></a>应用实例</h3><ol>
+<li><strong>cat /e</strong>tc/passwd | grep root **<br>截取/etc/passwd下含有关键字root的行，grep root /etc/passwd</li>
+<li><strong> grep -n root /etc/passwd </strong><br>截取/etc/passwd中含有root的行，并显示行号</li>
+<li><strong> grep -v root /etc/passwd | grep -v nologin </strong><br>截取不含有root和nologin的行</li>
+<li><strong> dmesg | grep -n –color=auto ‘DMA’ </strong><br>用dmesg0列出核心信息，再以grep找出含有DMA的行，将捉到的关键字(即DMA)上色，并加上行号显示</li>
+<li><strong> dmesg | grep -n -A3 -B2 –color=auto ‘eth’ </strong><br>用dmesg列出核心信息，用grep将截取到的关键字eth的行上色显示，并将关键字所在的前两行与后三行也一起显示</li>
+<li><strong> grep -l -r ‘root’ * </strong><br>在当前目录及其子目录下搜索’root‘行的文件，但是不显示匹配的行，只显示匹配的文件，-r表示递归显示</li>
+<li><strong> grep -n ‘[^a]b’ test1 </strong><br>字符类的反向选择 [^] ：如果想要搜索到有b的行，但不想要b前面有a</li>
+<li><strong> grep -n ‘[^a-z]yqy’ test1 </strong><br>字符类的连续,yqy前面不想要有小写字节,由於小写字节的 ASCII 上编码的顺序是连续的</li>
+<li><strong> grep -n ‘[0-9]’ test1 </strong><br>取得有数字的那一行</li>
+<li><strong> grep -n ‘^yqy’ test1 </strong><br>列出行首为yqy的行</li>
+<li><strong> grep -n ‘.$’ </strong><br>找出行尾结束为小数点 (.) 的那一行</li>
+<li><strong> grep -n ‘^$’ test1 </strong><br>找出空白行<br>详情参阅：<a href="http://www.cnblogs.com/ggjucheng/archive/2013/01/13/2856896.html" target="_blank" rel="external">http://www.cnblogs.com/ggjucheng/archive/2013/01/13/2856896.html</a></li>
+</ol>
+
       
     </div>
 
@@ -470,7 +486,7 @@ sed：Stream E">
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#awk-关键字：分析-amp-处理"><span class="nav-number">2.</span> <span class="nav-text">awk(关键字：分析&处理)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#使用规则"><span class="nav-number">2.1.</span> <span class="nav-text">使用规则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#awk内置变量"><span class="nav-number">2.2.</span> <span class="nav-text">awk内置变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#awk工作流程"><span class="nav-number">2.3.</span> <span class="nav-text">awk工作流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#入门实例"><span class="nav-number">2.4.</span> <span class="nav-text">入门实例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sed-关键字：编辑"><span class="nav-number">3.</span> <span class="nav-text">sed(关键字：编辑)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#使用规则-1"><span class="nav-number">3.1.</span> <span class="nav-text">使用规则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#工作流程"><span class="nav-number">3.2.</span> <span class="nav-text">工作流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常用选项和命令"><span class="nav-number">3.3.</span> <span class="nav-text">常用选项和命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#应用实例"><span class="nav-number">3.4.</span> <span class="nav-text">应用实例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#grep-关键字：截取"><span class="nav-number">4.</span> <span class="nav-text">grep(关键字：截取)</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#awk-关键字：分析-amp-处理"><span class="nav-number">2.</span> <span class="nav-text">awk(关键字：分析&处理)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#使用规则"><span class="nav-number">2.1.</span> <span class="nav-text">使用规则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#awk内置变量"><span class="nav-number">2.2.</span> <span class="nav-text">awk内置变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#awk工作流程"><span class="nav-number">2.3.</span> <span class="nav-text">awk工作流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#入门实例"><span class="nav-number">2.4.</span> <span class="nav-text">入门实例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sed-关键字：编辑"><span class="nav-number">3.</span> <span class="nav-text">sed(关键字：编辑)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#使用规则-1"><span class="nav-number">3.1.</span> <span class="nav-text">使用规则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#工作流程"><span class="nav-number">3.2.</span> <span class="nav-text">工作流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常用选项和命令"><span class="nav-number">3.3.</span> <span class="nav-text">常用选项和命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#应用实例"><span class="nav-number">3.4.</span> <span class="nav-text">应用实例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#grep-关键字：截取"><span class="nav-number">4.</span> <span class="nav-text">grep(关键字：截取)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#使用规则-2"><span class="nav-number">4.1.</span> <span class="nav-text">使用规则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#选项与参数"><span class="nav-number">4.2.</span> <span class="nav-text">选项与参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#应用实例-1"><span class="nav-number">4.3.</span> <span class="nav-text">应用实例</span></a></li></ol></li></ol></div>
             
           </div>
         </section>
